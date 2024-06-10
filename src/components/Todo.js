@@ -28,10 +28,7 @@ const Todo = ({ addTask, tasks }) => {
               </div>
 
               <div className="container border rounded d-flex justify-content-center shadow p-3 md-5 bg-white rounded">
-                <div className="row">
-                  <div className="text-center">
-                    <h2></h2>
-                  </div>
+                <div className="row">                  
                   <form className="col-12 p-2" onSubmit={handleSubmit}>
                     <label htmlFor="title" className="my-2">
                         Enter Title
