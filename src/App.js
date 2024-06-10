@@ -11,23 +11,23 @@ const App = () => {
   const [tasks, setTasks] = useState([]);
   const [filter, setFilter] = useState('All');
   useEffect(() => {
-    axios.get('http://127.0.0.1:3001/api/v1/tasks').then(response => setTasks(response.data));
+    axios.get(`${process.env.REACT_APP_API_BASE_URL}/tasks`).then(response => setTasks(response.data));
   }, []);
 
   const addTask = (newTask) => {
-    axios.post('http://127.0.0.1:3001/api/v1/tasks', newTask).then(response => {
+    axios.post(`${process.env.REACT_APP_API_BASE_URL}/tasks`, newTask).then(response => {
       setTasks([...tasks, response.data]);
     });
   };
 
   const updateTask = (id, updatedTask) => {
-    axios.patch(`http://127.0.0.1:3001/api/v1/tasks/${id}`, updatedTask).then(response => {
+    axios.patch(`${process.env.REACT_APP_API_BASE_URL}/tasks/${id}`, updatedTask).then(response => {
       setTasks(tasks.map(task => (task.id === id ? response.data : task)));
     });
   };
 
   const deleteTask = (id) => {
-    axios.delete(`http://127.0.0.1:3001/api/v1/tasks/${id}`).then(() => {
+    axios.delete(`${process.env.REACT_APP_API_BASE_URL}/tasks/${id}`).then(() => {
       setTasks(tasks.filter(task => task.id !== id));
     });
   };
